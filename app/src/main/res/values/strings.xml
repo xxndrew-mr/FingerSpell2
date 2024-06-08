@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">FingerSpell</string>
+    <string name="start">Get Started</string>
+    <string name="text1">Welcome to the finger spell,we are ready to help you with your problems regarding sign language very easily using AI assistance</string>
+    <string name="name">Huruf</string>
+    <string name="upload">Scan</string>
+    <string name="gallery">gallery</string>
+    <string name="camera">Camera</string>
+    <string name="search">Search</string>
+    <string-array name="data_name">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+    <integer-array name="photo">
+        <item>@drawable/huruf_a</item>
+        <item>@drawable/huruf_b</item>
+        <item>@drawable/huruf_c</item>
+        <item>@drawable/huruf_d</item>
+        <item>@drawable/huruf_e</item>
+        <item>@drawable/huruf_f</item>
+        <item>@drawable/huruf_g</item>
+        <item>@drawable/huruf_h</item>
+        <item>@drawable/huruf_i</item>
+        <item>@drawable/huruf_j</item>
+        <item>@drawable/huruf_k</item>
+        <item>@drawable/huruf_l</item>
+        <item>@drawable/huruf_m</item>
+        <item>@drawable/huruf_n</item>
+        <item>@drawable/huruf_o</item>
+        <item>@drawable/huruf_p</item>
+        <item>@drawable/huruf_q</item>
+        <item>@drawable/huruf_r</item>
+        <item>@drawable/huruf_s</item>
+        <item>@drawable/huruf_t</item>
+        <item>@drawable/huruf_u</item>
+        <item>@drawable/huruf_v</item>
+        <item>@drawable/huruf_w</item>
+        <item>@drawable/huruf_x</item>
+        <item>@drawable/huruf_y</item>
+        <item>@drawable/huruf_z</item>
+    </integer-array>
+    <string name="title_activity_home2">Home_Activity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="history">history</string>
+    <string name="login">Login</string>
+    <string name="Email">Email</string>
+    <string name="password">password</string>
+    <string name="sign_up">Register</string>
+</resources>

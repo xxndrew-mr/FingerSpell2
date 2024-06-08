@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.signup.SignupActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:background="@color/black">
+
+        <!-- Add ImageView here -->
+        <ImageView
+            android:id="@+id/appbar_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/background_home" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.login.LoginActivity">
+
+    <EditText
+        android:id="@+id/edit_re_password"
+        android:layout_width="371dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/background_edit_text"
+        android:ems="10"
+        android:hint="Re-password"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Tittle_1"
+        android:layout_width="185dp"
+        android:layout_height="74dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="arial"
+        android:text="@string/sign_up"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/edit_Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/edit_password"
+            android:layout_width="371dp"
+            android:layout_height="57dp"
+            android:layout_marginBottom="48dp"
+            android:background="@drawable/background_edit_text"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/edit_re_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_Login"
+        android:layout_width="222dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="196dp"
+        android:backgroundTint="@color/coklat"
+        android:text="@string/sign_up"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <EditText
+        android:id="@+id/edit_Email"
+        android:layout_width="371dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/background_edit_text"
+        android:ems="10"
+        android:hint="@string/Email"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/edit_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
