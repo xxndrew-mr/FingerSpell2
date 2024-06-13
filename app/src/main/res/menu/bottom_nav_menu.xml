@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_camera"
+        android:id="@+id/navigation_Scan"
         android:icon="@drawable/camera"
-        android:title="@string/camera" />
+        android:title="@string/Scan" />
 
     <item
         android:id="@+id/navigation_dashboard"

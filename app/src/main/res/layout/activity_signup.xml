@@ -41,20 +41,20 @@
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/Tittle_1"
-        android:layout_width="185dp"
-        android:layout_height="74dp"
-        android:layout_marginBottom="32dp"
-        android:fontFamily="arial"
-        android:text="@string/sign_up"
-        android:textAlignment="center"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/edit_Email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/Tittle_1"
+            android:layout_width="239dp"
+            android:layout_height="64dp"
+            android:layout_marginBottom="32dp"
+            android:fontFamily="arial"
+            android:text="@string/sign_up"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/edit_Email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/edit_password"

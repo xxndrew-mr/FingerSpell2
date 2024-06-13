@@ -36,32 +36,32 @@
         <item>Z</item>
     </string-array>
     <integer-array name="photo">
-        <item>@drawable/huruf_a</item>
-        <item>@drawable/huruf_b</item>
-        <item>@drawable/huruf_c</item>
-        <item>@drawable/huruf_d</item>
-        <item>@drawable/huruf_e</item>
-        <item>@drawable/huruf_f</item>
-        <item>@drawable/huruf_g</item>
-        <item>@drawable/huruf_h</item>
-        <item>@drawable/huruf_i</item>
-        <item>@drawable/huruf_j</item>
-        <item>@drawable/huruf_k</item>
-        <item>@drawable/huruf_l</item>
-        <item>@drawable/huruf_m</item>
-        <item>@drawable/huruf_n</item>
-        <item>@drawable/huruf_o</item>
-        <item>@drawable/huruf_p</item>
-        <item>@drawable/huruf_q</item>
-        <item>@drawable/huruf_r</item>
-        <item>@drawable/huruf_s</item>
-        <item>@drawable/huruf_t</item>
-        <item>@drawable/huruf_u</item>
-        <item>@drawable/huruf_v</item>
-        <item>@drawable/huruf_w</item>
-        <item>@drawable/huruf_x</item>
-        <item>@drawable/huruf_y</item>
-        <item>@drawable/huruf_z</item>
+        <item>@drawable/a_huruf</item>
+        <item>@drawable/b_huruf</item>
+        <item>@drawable/c_huruf</item>
+        <item>@drawable/d_huruf</item>
+        <item>@drawable/e_huruf</item>
+        <item>@drawable/f_huruf</item>
+        <item>@drawable/g_huruf</item>
+        <item>@drawable/h_huruf</item>
+        <item>@drawable/i_huruf</item>
+        <item>@drawable/j_huruf</item>
+        <item>@drawable/k_huruf</item>
+        <item>@drawable/l_huruf</item>
+        <item>@drawable/m_huruf</item>
+        <item>@drawable/n_huruf</item>
+        <item>@drawable/o_huruf</item>
+        <item>@drawable/p_huruf</item>
+        <item>@drawable/q_huruf</item>
+        <item>@drawable/r_huruf</item>
+        <item>@drawable/s_huruf</item>
+        <item>@drawable/t_huruf</item>
+        <item>@drawable/u_huruf</item>
+        <item>@drawable/v_huruf</item>
+        <item>@drawable/w_huruf</item>
+        <item>@drawable/x_huruf</item>
+        <item>@drawable/y_huruf</item>
+        <item>@drawable/z_huruf</item>
     </integer-array>
     <string name="title_activity_home2">Home_Activity2</string>
     <string name="title_home">Home</string>
@@ -72,4 +72,8 @@
     <string name="Email">Email</string>
     <string name="password">password</string>
     <string name="sign_up">Register</string>
+    <string name="error_message">Gambar tidak valid</string>
+    <string name="image_classifier_failed">Image classifier failed to initialize. See error logs for details</string>
+    <string name="empty_image_warning">noting image</string>
+    <string name="Scan">Scan</string>
 </resources>

@@ -6,10 +6,10 @@
     app:startDestination="@+id/navigation_home">
 
     <activity
-        android:id="@+id/navigation_camera"
-        android:name="com.example.fingerspell.View.CameraActivity"
-        android:label="@string/camera"
-        tools:layout="@layout/activity_camera" />
+        android:id="@+id/navigation_Scan"
+        android:name="com.example.fingerspell.View.ScanActivity"
+        android:label="@string/Scan"
+        tools:layout="@layout/activity_scan" />
 
     <activity
         android:id="@+id/navigation_history"

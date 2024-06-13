@@ -1,6 +1,7 @@
 package com.example.fingerspell.View
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -12,22 +13,15 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.fingerspell.R
 import com.example.fingerspell.data.Finger
 import com.example.fingerspell.databinding.ActivityHomeBinding
-import com.example.fingerspell.getImageUri
 import com.example.fingerspell.model.ReviewAdapter
 
 class HomeActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityHomeBinding
-    private lateinit var adapter: ReviewAdapter
-    private val list = ArrayList<Finger>()
-    private var currentImageUri: Uri? = null
-
     private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                startCamera()
+                Toast.makeText(this, "Permission request granted", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(this, "Permission request denied", Toast.LENGTH_LONG).show()
             }
@@ -39,21 +33,29 @@ class HomeActivity : AppCompatActivity() {
             REQUIRED_PERMISSION
         ) == PackageManager.PERMISSION_GRANTED
 
+    private lateinit var binding: ActivityHomeBinding
+    private lateinit var adapter: ReviewAdapter
+    private val list = ArrayList<Finger>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        if (!allPermissionsGranted()) {
+            requestPermissionLauncher.launch(REQUIRED_PERMISSION)
+        }
         setupRecyclerView()
         loadData()
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.navigation_camera -> {
-                    checkPermissionAndStartCamera()
+                R.id.navigation_Scan -> {
+                    startScan()
                     true
                 }
-                else -> false
+                else -> {
+                    startHistory()
+                    true
+                }
             }
         }
     }
@@ -81,36 +83,13 @@ class HomeActivity : AppCompatActivity() {
         dataPhoto.recycle()
         return listFinger
     }
-
-    private fun checkPermissionAndStartCamera() {
-        if (allPermissionsGranted()) {
-            startCamera()
-        } else {
-            requestPermissionLauncher.launch(REQUIRED_PERMISSION)
-        }
+    private fun startScan(){
+        val intent = Intent(this, ScanActivity::class.java)
+        startActivity(intent)
     }
-
-    private fun startCamera() {
-        currentImageUri = getImageUri(this)
-        launcherIntentCamera.launch(currentImageUri!!)
-    }
-
-    private val launcherIntentCamera = registerForActivityResult(
-        ActivityResultContracts.TakePicture()
-    ) { isSuccess ->
-        if (isSuccess) {
-            showImage()
-        }
-    }
-
-    private fun showImage() {
-        currentImageUri?.let { uri ->
-            // Implement your logic to display the image
-        }
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    private fun startHistory(){
+        val intent = Intent(this, HistoryActivity::class.java)
+        startActivity(intent)
     }
 
     companion object {

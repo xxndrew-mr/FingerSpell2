@@ -1,97 +1,93 @@
 package com.example.fingerspell.View
 
-import android.Manifest
-import android.content.pm.PackageManager
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.provider.MediaStore
 import android.view.View
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.fingerspell.R
 import com.example.fingerspell.databinding.ActivityScanBinding
-import com.example.fingerspell.getImageUri
+import com.example.fingerspell.model.ObjectDetectorHelper
+import org.tensorflow.lite.task.vision.classifier.Classifications
+import android.graphics.Bitmap
+import android.util.Log
+import androidx.activity.enableEdgeToEdge
+import java.io.IOException
 
-class ScanActivity : AppCompatActivity() {
+class ScanActivity : AppCompatActivity(), ObjectDetectorHelper.ClassifierListener {
     private lateinit var binding: ActivityScanBinding
+    private lateinit var objectDetectorHelper: ObjectDetectorHelper
     private var currentImageUri: Uri? = null
-    private val requestPermissionLauncher =
-        registerForActivityResult(
-            ActivityResultContracts.RequestPermission()
-        ) { isGranted: Boolean ->
-            if (isGranted) {
-                Toast.makeText(this, "Permission request granted", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(this, "Permission request denied", Toast.LENGTH_LONG).show()
+
+    private val cameraActivityLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == CameraActivity.CAMERAX_RESULT) {
+            val imageUri = result.data?.getStringExtra(CameraActivity.EXTRA_CAMERAX_IMAGE)
+            imageUri?.let {
+                val uri = Uri.parse(it)
+                currentImageUri = uri
+                binding.previewImageView.setImageURI(uri)
+                classifyImage(uri)
             }
         }
-
-    private fun allPermissionsGranted() =
-        ContextCompat.checkSelfPermission(
-            this,
-            REQUIRED_PERMISSION
-        ) == PackageManager.PERMISSION_GRANTED
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        binding = ActivityScanBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.title = "Scan"
-        if (!allPermissionsGranted()) {
-            requestPermissionLauncher.launch(REQUIRED_PERMISSION)
+
+        objectDetectorHelper = ObjectDetectorHelper(
+            context = this,
+            classifierListener = this
+        )
+
+        binding.ScanButton.setOnClickListener {
+            showLoading(true)
+            startCameraActivity()
         }
     }
 
-    private fun startGallery() {
-        launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+    private fun startCameraActivity() {
+        val intent = Intent(this, CameraActivity::class.java)
+        cameraActivityLauncher.launch(intent)
     }
 
-    private val launcherGallery = registerForActivityResult(
-        ActivityResultContracts.PickVisualMedia()
-    ) { uri: Uri? ->
-        if (uri != null) {
-            currentImageUri = uri
-            showImage()
+    private fun classifyImage(uri: Uri) {
+        try {
+            val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
+            Log.d("ScanActivity", "Ukuran bitmap: ${bitmap.width}x${bitmap.height}")
+            objectDetectorHelper.classifyImage(bitmap)
+        } catch (e: IOException) {
+            e.printStackTrace()
+            onError("Gagal memproses gambar")
+        }
+    }
+
+    override fun onError(error: String) {
+        showLoading(false)
+        binding.resultTextView.text = error
+        Log.e("ScanActivity", "Kesalahan: $error")
+    }
+
+    override fun onResults(results: List<Classifications>?, inferenceTime: Long) {
+        showLoading(false)
+        if (results.isNullOrEmpty()) {
+            binding.resultTextView.text = getString(R.string.error_message)
+            Log.d("ScanActivity", "Tidak ada hasil klasifikasi")
         } else {
-            Log.d("Photo Picker", "No media selected")
-        }
-    }
-
-    private fun startCamera() {
-        currentImageUri = getImageUri(this)
-        launcherIntentCamera.launch(currentImageUri!!)
-    }
-
-    private val launcherIntentCamera = registerForActivityResult(
-        ActivityResultContracts.TakePicture()
-    ) { isSuccess ->
-        if (isSuccess) {
-            showImage()
-        }
-    }
-
-    private fun showImage() {
-        currentImageUri?.let {
-            Log.d("Image URI", "showImage: $it")
-            binding.previewImageView.setImageURI(it)
+            val resultString = results.joinToString { it.categories[0].label }
+            Log.d("ScanActivity", "Hasil klasifikasi: $resultString")
+            binding.resultTextView.text = resultString
         }
     }
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    companion object {
-        private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
     }
 }
