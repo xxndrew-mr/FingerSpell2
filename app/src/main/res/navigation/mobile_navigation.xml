@@ -6,8 +6,8 @@
     app:startDestination="@+id/navigation_home">
 
     <activity
-        android:id="@+id/navigation_Scan"
-        android:name="com.example.fingerspell.View.ScanActivity"
+        android:id="@+id/navigation_Camera"
+        android:name="com.example.fingerspell.View.CameraActivity"
         android:label="@string/Scan"
         tools:layout="@layout/activity_scan" />
 

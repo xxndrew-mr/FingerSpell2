@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_Scan"
+        android:id="@+id/navigation_Camera"
         android:icon="@drawable/camera"
         android:title="@string/Scan" />
 

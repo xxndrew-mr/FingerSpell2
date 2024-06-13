@@ -48,8 +48,8 @@ class HomeActivity : AppCompatActivity() {
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.navigation_Scan -> {
-                    startScan()
+                R.id.navigation_Camera -> {
+                    startCamera()
                     true
                 }
                 else -> {
@@ -83,8 +83,8 @@ class HomeActivity : AppCompatActivity() {
         dataPhoto.recycle()
         return listFinger
     }
-    private fun startScan(){
-        val intent = Intent(this, ScanActivity::class.java)
+    private fun startCamera(){
+        val intent = Intent(this, CameraActivity::class.java)
         startActivity(intent)
     }
     private fun startHistory(){

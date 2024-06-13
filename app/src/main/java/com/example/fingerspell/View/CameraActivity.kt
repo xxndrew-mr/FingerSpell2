@@ -6,8 +6,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
-import android.view.OrientationEventListener
-import android.view.Surface
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
@@ -28,6 +26,7 @@ class CameraActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCameraBinding
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     private var imageCapture: ImageCapture? = null
+    private var currentImageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,11 +90,8 @@ class CameraActivity : AppCompatActivity() {
             ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val resultIntent = Intent().apply {
-                        putExtra(EXTRA_CAMERAX_IMAGE, photoURI.toString())
-                    }
-                    setResult(CAMERAX_RESULT, resultIntent)
-                    finish()
+                    currentImageUri = photoURI
+                    goToScanActivity()
                 }
 
                 override fun onError(exc: ImageCaptureException) {
@@ -106,6 +102,14 @@ class CameraActivity : AppCompatActivity() {
         )
     }
 
+    private fun goToScanActivity() {
+        currentImageUri?.let { uri ->
+            val intent = Intent(this, ScanActivity::class.java).apply {
+                putExtra(ScanActivity.EXTRA_IMAGE_URI, uri.toString())
+            }
+            startActivity(intent)
+        }
+    }
 
     private fun hideSystemUI() {
         @Suppress("DEPRECATION")
@@ -120,35 +124,8 @@ class CameraActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
-    private val orientationEventListener by lazy {
-        object : OrientationEventListener(this) {
-            override fun onOrientationChanged(orientation: Int) {
-                if (orientation == ORIENTATION_UNKNOWN) return
-                val rotation = when (orientation) {
-                    in 45 until 135 -> Surface.ROTATION_270
-                    in 135 until 225 -> Surface.ROTATION_180
-                    in 225 until 315 -> Surface.ROTATION_90
-                    else -> Surface.ROTATION_0
-                }
-                imageCapture?.targetRotation = rotation
-            }
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        orientationEventListener.enable()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        orientationEventListener.disable()
-    }
-
     companion object {
         private const val TAG = "CameraActivity"
-        const val EXTRA_CAMERAX_IMAGE = "Camera Image"
-        const val CAMERAX_RESULT = 200
-        private const val FILENAME_FORMAT = "yyyyMMdd_HHmmss"
+        const val FILENAME_FORMAT = "yyyyMMdd_HHmmss"
     }
 }
