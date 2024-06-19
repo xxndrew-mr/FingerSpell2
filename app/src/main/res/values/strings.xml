@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">FingerSpell</string>
+    <string name="start">Get Started</string>
+    <string name="text1">Welcome to the finger spell,we are ready to help you with your problems regarding sign language very easily using AI assistance</string>
+    <string name="name">Huruf</string>
+    <string name="upload">Scan</string>
+    <string name="gallery">gallery</string>
+    <string name="camera">Camera</string>
+    <string name="search">Search</string>
+    <string-array name="data_name">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+    <integer-array name="photo">
+        <item>@drawable/a_huruf</item>
+        <item>@drawable/b_huruf</item>
+        <item>@drawable/c_huruf</item>
+        <item>@drawable/d_huruf</item>
+        <item>@drawable/e_huruf</item>
+        <item>@drawable/f_huruf</item>
+        <item>@drawable/g_huruf</item>
+        <item>@drawable/h_huruf</item>
+        <item>@drawable/i_huruf</item>
+        <item>@drawable/j_huruf</item>
+        <item>@drawable/k_huruf</item>
+        <item>@drawable/l_huruf</item>
+        <item>@drawable/m_huruf</item>
+        <item>@drawable/n_huruf</item>
+        <item>@drawable/o_huruf</item>
+        <item>@drawable/p_huruf</item>
+        <item>@drawable/q_huruf</item>
+        <item>@drawable/r_huruf</item>
+        <item>@drawable/s_huruf</item>
+        <item>@drawable/t_huruf</item>
+        <item>@drawable/u_huruf</item>
+        <item>@drawable/v_huruf</item>
+        <item>@drawable/w_huruf</item>
+        <item>@drawable/x_huruf</item>
+        <item>@drawable/y_huruf</item>
+        <item>@drawable/z_huruf</item>
+    </integer-array>
+    <string name="title_activity_home2">Home_Activity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="history">history</string>
+    <string name="login">Login</string>
+    <string name="Email">Email</string>
+    <string name="password">password</string>
+    <string name="sign_up">Register</string>
+    <string name="error_message">Gambar tidak valid</string>
+    <string name="image_classifier_failed">Image classifier failed to initialize. See error logs for details</string>
+    <string name="empty_image_warning">noting image</string>
+    <string name="Scan">Scan</string>
+    <string name="email">Email</string>
+    <string name="signup">signup</string>
+    <string name="re_password">repassword</string>
+</resources>

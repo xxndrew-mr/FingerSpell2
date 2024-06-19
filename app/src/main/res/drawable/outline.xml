@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="500"
+    android:propertyName="pathData"
+    android:valueFrom="M1,9h2L5,6L8,3h8v2h5v11h-5v2h-3v1c0,0.55-0.45,1-1,1h-4c-0.55,0-1-0.45-1-1v-1H1V9z M10,13h4v7h-4V13z M12,11c0.55,0,1-0.45,1-1v-1h-2v1C11,10.55,11.45,11,12,11z M19,9v11h-1V9H19z M20,7h-4v2h4V7z"
+    android:valueTo="M1,9h2L5,6L8,3h8v2h5v11h-5v2h-3v1c0,0.55-0.45,1-1,1h-4c-0.55,0-1-0.45-1-1v-1H1V9z M10,13h4v7h-4V13z M12,11c0.55,0,1-0.45,1-1v-1h-2v1C11,10.55,11.45,11,12,11z M19,9v11h-1V9H19z M20,7h-4v2h4V7z M12,4c-0.55,0-1,0.45-1,1v1h2v-1C13,4.45,12.55,4,12,4z" />
